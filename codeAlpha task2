@@ -1,0 +1,704 @@
+public
+
+#index.html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="theme-color" content="#000000">
+	
+	<link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+	<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+	
+	<title>Social media dashboard</title>
+</head>
+
+<body>
+	<script src="app.js"></script>
+		
+	
+	<div id="root"></div>
+	
+    
+</body>
+
+</html>
+
+#src/dashboard
+
+#dashboard-card-container.css
+
+.section1 {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 4rem;
+  }
+  .section2 {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem 4rem 6rem 4rem;
+  }
+  .sub-header {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: Inter;
+    color: var(--darkgrayishblue);
+    margin: 2rem 11rem;
+  }
+  
+  @media (max-width: 1200px) {
+    .section1,
+    .section2 {
+      flex-wrap: wrap;
+    }
+  }
+  @media (max-width: 727px) {
+    .section1,
+    .section2 {
+      margin: 0px;
+    }
+    .sub-header {
+      margin: 2rem;
+    }
+  }
+
+
+#dashboard-card-container.jsx
+
+import React, { Component } from "react";
+import "./dashboard-card-container.css";
+import CardBig from "./dashboard-card";
+import CardSmall from "./dashboard-card-small";
+import Navbar from "./dashboard-nav";
+import facebook from "../images/icon-facebook.svg";
+import iconup from "../images/icon-up.svg";
+import icondown from "../images/icon-down.svg";
+import instagram from "../images/icon-instagram.svg";
+import twitter from "../images/icon-twitter.svg";
+import youtube from "../images/icon-youtube.svg";
+
+class Dashboard extends Component {
+  render() {
+    return (
+      <div className="dashboard-body">
+        <div className="nav-container">
+          <Navbar />
+        </div>
+        <div className="section1">
+          <CardBig
+            imgsrc={facebook}
+            username="@nathanf"
+            followernumber="1987"
+            follower="followers"
+            imgsrc1={iconup}
+            today="12 Today"
+            cssClass="color-bar"
+            LargeCard="largeCard1"
+            LargeCardSocial="#largeCardSocialName1"
+          />
+          <CardBig
+            imgsrc={twitter}
+            username="@nathanf"
+            followernumber="1044"
+            follower="followers"
+            imgsrc1={iconup}
+            today="12 Today"
+            cssClass="color-bar"
+            LargeCard="largeCard2"
+            LargeCardSocial="#largeCardSocialName2"
+          />
+          <CardBig
+            imgsrc={instagram}
+            username="@realnathanf"
+            followernumber="11k"
+            follower="followers"
+            imgsrc1={iconup}
+            today="12 Today"
+            cssClass="color-bar3"
+            LargeCard="largeCard3"
+            LargeCardSocial="#largeCardSocialName3"
+          />
+          <CardBig
+            imgsrc={youtube}
+            username="Nathan F."
+            followernumber="8239"
+            follower="subscribers"
+            imgsrc1={icondown}
+            today="144 Today"
+            cssClass="color-bar2"
+            LargeCard="largeCard4"
+            LargeCardSocial="#largeCardSocialName4"
+          />
+        </div>
+        <div className="sub-header">
+          <p>Overview - Today</p>
+        </div>
+        <div className="section1">
+          <CardSmall
+            imgsrc={facebook}
+            smallheader="Page Views"
+            countnumber="87"
+            percent="3%"
+            smallColor="small-color2"
+            imgsrc2={iconup}
+            smallCard="smallCard1"
+          />
+          <CardSmall
+            imgsrc={facebook}
+            smallheader="Page Views"
+            countnumber="52"
+            percent="2%"
+            smallColor="small-color"
+            imgsrc2={icondown}
+            smallCard="smallCard2"
+          />
+          <CardSmall
+            imgsrc={instagram}
+            smallheader="Likes"
+            countnumber="5462"
+            percent="2257%"
+            smallColor="small-color2"
+            imgsrc2={iconup}
+            smallCard="smallCard3"
+          />
+          <CardSmall
+            imgsrc={instagram}
+            smallheader="Profile Views"
+            countnumber="52k"
+            percent="1375%"
+            smallColor="small-color2"
+            imgsrc2={iconup}
+            smallCard="smallCard4"
+          />
+        </div>
+        <div className="section2">
+          <CardSmall
+            imgsrc={twitter}
+            smallheader="Retweets"
+            countnumber="117"
+            percent="303%"
+            smallColor="small-color2"
+            imgsrc2={iconup}
+            smallCard="smallCard1"
+          />
+          <CardSmall
+            imgsrc={twitter}
+            smallheader="Likes"
+            countnumber="507"
+            percent="553%"
+            smallColor="small-color2"
+            imgsrc2={iconup}
+            smallCard="smallCard2"
+          />
+          <CardSmall
+            imgsrc={youtube}
+            smallheader="Likes"
+            countnumber="107"
+            percent="19%"
+            smallColor="small-color"
+            imgsrc2={icondown}
+            smallCard="smallCard3"
+          />
+          <CardSmall
+            imgsrc={youtube}
+            smallheader="Team Views"
+            countnumber="1407"
+            percent="12%"
+            smallColor="small-color"
+            imgsrc2={icondown}
+            smallCard="smallCard4"
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Dashboard;
+
+#dashboard-card-small.css
+
+small-card-container {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #dddee6);
+    box-shadow: 20px 20px 60px #d0d2d9, -20px -20px 60px #ffffff;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease, border 0.3s;
+  }
+  .small-card-container:hover {
+    background: linear-gradient(-145deg, #ffffff, #dddee6);
+    box-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
+  }
+  .small-card-container .header {
+    display: flex;
+    margin: 2rem 2rem 0rem 2rem;
+    justify-content: space-between;
+  }
+  .small-card-container .header p {
+    font-size: 1em;
+    font-weight: 700;
+    font-family: Inter;
+    margin-top: 5px;
+    color: var(--darkgrayishblue);
+  }
+  
+  .small-card-container .header img {
+    width: 1.5rem;
+  }
+  
+  .small-card-container .body {
+    display: flex;
+    margin: 2rem;
+    justify-content: space-between;
+  }
+  .body .count-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0px;
+    color: var(--verydarkbluetext);
+  }
+  .count-status {
+    display: flex;
+    margin-top: 16px;
+  }
+  .count-status img {
+    width: 10px;
+    height: 5px;
+    margin: 8px 5px auto 0px;
+  }
+  .count-status {
+    font-weight: 700;
+  }
+  .small-color {
+    color: var(--brightred);
+  }
+  .small-color2 {
+    color: var(--limegreen);
+  }
+  
+  #smallCard1,
+  #smallCard2,
+  #smallCard3,
+  #smallCard4 {
+    transition: all 0.3s ease, border 0.3s;
+  }
+  
+  .dark-theme-card {
+    background: linear-gradient(145deg, #343e65, #2c3455);
+    box-shadow: 5px 7px 16px rgba(0, 0, 0, 0.5),
+      -5px -5px 7px rgba(63, 63, 63, 0.5);
+    transition: all 0.6s cubic-bezier(0.11, 0, 0.5, 0);
+  }
+  .dark-theme-card:hover {
+    background: linear-gradient(-145deg, #343e65, #2c3455);
+    box-shadow: inset 20px 20px 60px #2a3150, inset -20px -20px 60px #38436c;
+  }
+  .dark-theme-text {
+    color: var(--whitedarktheme) !important;
+    transition: all 0.6s cubic-bezier(0.11, 0, 0.5, 0);
+  }
+  .dark-theme-text-gray {
+    color: var(--desaturatedblue) !important;
+    transition: all 0.6s cubic-bezier(0.11, 0, 0.5, 0);
+  }
+  
+  @media (max-width: 1400px) {
+    .small-card-container {
+      width: 250px;
+    }
+  }
+  @media (max-width: 1200px) {
+    .small-card-container {
+      margin: 2rem;
+      width: 300px;
+    }
+  }
+
+
+# dashboard-card-small.jsx
+
+import React, { Component } from "react";
+import "./dashboard-card-small.css";
+
+class CardSmall extends Component {
+  render() {
+    return (
+      <div id={this.props.smallCard} className="small-card-container">
+        <div className="header">
+          <p>{this.props.smallheader}</p>
+          <img src={this.props.imgsrc} alt="" />
+        </div>
+        <div className="body">
+          <p className="count-number">{this.props.countnumber}</p>
+          <div className="count-status">
+            <img src={this.props.imgsrc2} alt="" />
+            <p className={this.props.smallColor}>{this.props.percent}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default CardSmall;
+
+#dashbaord-nav.css
+
+nav-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 11rem 2rem 11rem;
+  }
+  
+  .title {
+    display: block;
+  }
+  .title p:nth-child(1) {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: Inter;
+    color: var(--verydarkbluetext);
+  }
+  .title p:nth-child(2) {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--darkgrayishblue);
+  }
+  
+  .onoff-switch {
+    display: flex;
+    margin-top: 1rem;
+  }
+  .onoff-switch p {
+    margin: 5px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--darkgrayishblue);
+  }
+  
+  .dark-switch[type="checkbox"],
+  .light-switch[type="checkbox"] {
+    position: relative;
+    width: 70px;
+    height: 30px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    background: var(--toggledark);
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s cubic-bezier(0.11, 0, 0.5, 0);
+  }
+  
+  .dark-switch:checked[type="checkbox"],
+  .light-switch:checked[type="checkbox"] {
+    background: var(--toggledark);
+  }
+  
+  .dark-switch[type="checkbox"]::before,
+  .light-switch[type="checkbox"]::before {
+    content: " ";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    background: var(--whitelighttheme);
+    transform: scale(1.1);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.8s ease;
+  }
+  .light-switch[type="checkbox"]::before {
+    background: linear-gradient(145deg, #343e65, #2c3455);
+  }
+  .dark-switch:checked[type="checkbox"]::before,
+  .light-switch:checked[type="checkbox"]::before {
+    left: 40px;
+  }
+  
+  @media (max-width: 780px) {
+    .nav-header {
+      margin: 2rem;
+    }
+  }
+  
+  @media (max-width: 563px) {
+    .dark-switch[type="checkbox"]::before,
+    .light-switch[type="checkbox"]::before {
+      width: 25px;
+      height: 25px;
+      top: 2px;
+    }
+    .dark-switch:checked[type="checkbox"]::before,
+    .light-switch:checked[type="checkbox"]::before {
+      left: 27px;
+    }
+  }
+
+#dashbaord-nav.jsx
+
+import React, { Component } from "react";
+import "./dashboard-nav.css";
+import "./dashboard-card.css";
+import "./dashboard-card-small.css";
+
+class Navbar extends Component {
+  toggleSwitch = () => {
+    var body = document.querySelector("body");
+    var titleHeader = document.querySelector(".title p");
+    var largeCard1 = document.querySelector("#largeCard1");
+    var largeCardSocialName1 = document.querySelector(
+      "#largeCard1 .social-name p"
+    );
+    var largeCardFollower1 = document.querySelector(
+      "#largeCard1 .follower-number p"
+    );
+    var largeCardSocialName2 = document.querySelector(
+      "#largeCard2 .social-name p"
+    );
+    var largeCardFollower2 = document.querySelector(
+      "#largeCard2 .follower-number p"
+    );
+    var largeCardSocialName3 = document.querySelector(
+      "#largeCard3 .social-name p"
+    );
+    var largeCardFollower3 = document.querySelector(
+      "#largeCard3 .follower-number p"
+    );
+    var largeCardSocialName4 = document.querySelector(
+      "#largeCard4 .social-name p"
+    );
+    var largeCardFollower4 = document.querySelector(
+      "#largeCard4 .follower-number p"
+    );
+    var largeCard2 = document.querySelector("#largeCard2");
+    var largeCard3 = document.querySelector("#largeCard3");
+    var largeCard4 = document.querySelector("#largeCard4");
+    var smallCard1 = document.querySelector(".section1 #smallCard1");
+    var smallCard1Header = document.querySelector(
+      ".section1 #smallCard1 .header p"
+    );
+    var smallCard1Body = document.querySelector(
+      ".section1 #smallCard1 .body p"
+    );
+    var smallCard2 = document.querySelector(".section1 #smallCard2");
+    var smallCard2Header = document.querySelector(
+      ".section1 #smallCard2 .header p"
+    );
+    var smallCard2Body = document.querySelector(
+      ".section1 #smallCard2 .body p"
+    );
+    var smallCard3 = document.querySelector(".section1 #smallCard3");
+    var smallCard3Header = document.querySelector(
+      ".section1 #smallCard3 .header p"
+    );
+    var smallCard3Body = document.querySelector(
+      ".section1 #smallCard3 .body p"
+    );
+    var smallCard4 = document.querySelector(".section1 #smallCard4");
+    var smallCard4Header = document.querySelector(
+      ".section1 #smallCard4 .header p"
+    );
+    var smallCard4Body = document.querySelector(
+      ".section1 #smallCard4 .body p"
+    );
+
+    var smallCard1s = document.querySelector(".section2 #smallCard1");
+    var smallCard1Headers = document.querySelector(
+      ".section2 #smallCard1 .header p"
+    );
+    var smallCard1Bodys = document.querySelector(
+      ".section2 #smallCard1 .body p"
+    );
+    var smallCard2s = document.querySelector(".section2 #smallCard2");
+    var smallCard2Headers = document.querySelector(
+      ".section2 #smallCard2 .header p"
+    );
+    var smallCard2Bodys = document.querySelector(
+      ".section2 #smallCard2 .body p"
+    );
+    var smallCard3s = document.querySelector(".section2 #smallCard3");
+    var smallCard3Headers = document.querySelector(
+      ".section2 #smallCard3 .header p"
+    );
+    var smallCard3Bodys = document.querySelector(
+      ".section2 #smallCard3 .body p"
+    );
+    var smallCard4s = document.querySelector(".section2 #smallCard4");
+    var smallCard4Headers = document.querySelector(
+      ".section2 #smallCard4 .header p"
+    );
+    var smallCard4Bodys = document.querySelector(
+      ".section2 #smallCard4 .body p"
+    );
+
+    body.classList.toggle("dark-theme-body");
+    titleHeader.classList.toggle("dark-theme-text");
+    largeCard1.classList.toggle("dark-theme-card");
+    largeCardSocialName1.classList.toggle("dark-theme-text-gray");
+    largeCardFollower1.classList.toggle("dark-theme-text");
+    largeCard2.classList.toggle("dark-theme-card");
+    largeCardSocialName2.classList.toggle("dark-theme-text-gray");
+    largeCardFollower2.classList.toggle("dark-theme-text");
+    largeCard3.classList.toggle("dark-theme-card");
+    largeCardSocialName3.classList.toggle("dark-theme-text-gray");
+    largeCardFollower3.classList.toggle("dark-theme-text");
+    largeCard4.classList.toggle("dark-theme-card");
+    largeCardSocialName4.classList.toggle("dark-theme-text-gray");
+    largeCardFollower4.classList.toggle("dark-theme-text");
+    smallCard1.classList.toggle("dark-theme-card");
+    smallCard1Header.classList.toggle("dark-theme-text-gray");
+    smallCard1Body.classList.toggle("dark-theme-text");
+    smallCard2.classList.toggle("dark-theme-card");
+    smallCard2Header.classList.toggle("dark-theme-text-gray");
+    smallCard2Body.classList.toggle("dark-theme-text");
+    smallCard3.classList.toggle("dark-theme-card");
+    smallCard3Header.classList.toggle("dark-theme-text-gray");
+    smallCard3Body.classList.toggle("dark-theme-text");
+    smallCard4.classList.toggle("dark-theme-card");
+    smallCard4Header.classList.toggle("dark-theme-text-gray");
+    smallCard4Body.classList.toggle("dark-theme-text");
+    smallCard1s.classList.toggle("dark-theme-card");
+    smallCard1Headers.classList.toggle("dark-theme-text-gray");
+    smallCard1Bodys.classList.toggle("dark-theme-text");
+    smallCard2s.classList.toggle("dark-theme-card");
+    smallCard2Headers.classList.toggle("dark-theme-text-gray");
+    smallCard2Bodys.classList.toggle("dark-theme-text");
+    smallCard3s.classList.toggle("dark-theme-card");
+    smallCard3Headers.classList.toggle("dark-theme-text-gray");
+    smallCard3Bodys.classList.toggle("dark-theme-text");
+    smallCard4s.classList.toggle("dark-theme-card");
+    smallCard4Headers.classList.toggle("dark-theme-text-gray");
+    smallCard4Bodys.classList.toggle("dark-theme-text");
+    textSwitch();
+    ColorSwitcher();
+
+    function textSwitch() {
+      var toggletext = document.querySelector(".onoff-switch p");
+      if (toggletext.innerHTML === "Dark Mode") {
+        toggletext.innerHTML = "Light Mode";
+      } else {
+        toggletext.innerHTML = "Dark Mode";
+      }
+    }
+    function ColorSwitcher() {
+      var inputSwitch = document.querySelector("#toggleColor");
+      if (inputSwitch.classList.contains("dark-switch")) {
+        inputSwitch.classList.remove("dark-switch");
+        inputSwitch.classList.add("light-switch");
+      } else if (inputSwitch.classList.contains("light-switch")) {
+        inputSwitch.classList.remove("light-switch");
+        inputSwitch.classList.add("dark-switch");
+      }
+    }
+  };
+  render() {
+    return (
+      <div className="nav-header">
+        <div className="title">
+          <p>Social Media Dashboard</p>
+          <p>Total Followers:23,004</p>
+        </div>
+        <div className="onoff-switch">
+          <p>Dark Mode</p>
+          <input
+            id="toggleColor"
+            className="dark-switch"
+            type="checkbox"
+            onClick={this.toggleSwitch}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Navbar;
+
+
+#images
+#app.js
+
+import React from "react";
+import Dashboard from "./Dashboard/dashboard-card-container";
+import "./styles.css";
+
+export default function App() {
+  return (
+    <div className="App">
+<Dashboard/>
+    </div>
+  );
+}
+
+#index.js
+
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+import App from "./app";
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  rootElement
+);
+
+#styles.css
+
+
+.app {
+    font-family: sans-serif;
+    text-align: center; 
+  }
+
+{}package.json
+
+{
+    "name": "react",
+    "version": "1.0.0",
+    "description": "React example starter project",
+    "keywords": [
+      "react",
+      "starter"
+    ],
+    "main": "src/index.js",
+    "dependencies": {
+      "react": "16.12.0",
+      "react-dom": "16.8.6",
+      "react-scripts": "3.0.1"
+    },
+    "devDependencies": {
+      "typescript": "3.8.3"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test --env=jsdom",
+      "eject": "react-scripts eject"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ]
+  }
+  
+
+
+
+ 
+
+ 
+
